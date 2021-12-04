@@ -1,4 +1,4 @@
-export const validateData = (data, setError, setSucces) => {
+export const validateData = (data, setError, setSucces, dataList) => {
   function checkDobLength(input, min) {
     if (input.length < min) {
       setError((previus) => ({
@@ -31,9 +31,15 @@ export const validateData = (data, setError, setSucces) => {
   }
 
   function checkEmail(input) {
+    const duplicateEmail = dataList.some((item) => item.email === input);
     const re =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (re.test(input.trim())) {
+    if (duplicateEmail) {
+      setError((previus) => ({
+        ...previus,
+        email: `This Email is already exist`,
+      }));
+    } else if (re.test(input.trim())) {
       setSucces(true);
     } else {
       setError((previus) => ({

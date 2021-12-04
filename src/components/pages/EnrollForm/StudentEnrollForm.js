@@ -73,7 +73,7 @@ function StudentEnrollForm(props) {
   //for add new student data
   const handleSubmit = (e) => {
     e.preventDefault();
-    validateData(studentDetail, setError, setSucces);
+    validateData(studentDetail, setError, setSucces, data);
     if (data?.length > 0 && success) {
       setData((previous) => [...previous, studentDetail]);
       localStorage.setItem("students-record", JSON.stringify(data));
