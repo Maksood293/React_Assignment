@@ -1,38 +1,82 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+
+:root {
+  --error-color: #e74c3c;
+  --background-color: #f9fafb;
+  --text-color: #000;
+  --user-detail-color: rgba(6, 6, 119, 0.637);
+  --table-border-color: #dddddd;
+  --button-color: #3498db;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: "Open Sans", sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
 .App {
   text-align: center;
+  padding: 0;
+  margin: 4px;
+  border: 1px solid var(--text-color);
+  height: 100vh;
 }
+.App .web-name {
+  margin: 15px 0px 0px 15px;
+  border: 5px solid var(--text-color);
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  width: fit-content;
+  padding: 15px 20px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.web-name a {
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--text-color);
+  font-size: 20px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.table-data {
+  margin: 50px 25px;
+}
+.link-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: end;
 }
-
-.App-link {
-  color: #61dafb;
+.Add-new-student-link {
+  text-decoration: none;
+  border: 2px solid var(--text-color);
+  padding: 5px 36px;
+  color: var(--text-color);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+table {
+  margin-top: 15px;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border: 2px solid var(--text-color);
+}
+thead {
+  border: 2px solid var(--text-color);
+}
+td,
+th {
+  border: 1px solid var(--table-border-color);
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+}
+.user-details {
+  color: var(--user-detail-color);
+  cursor: pointer;
+}
+.edit-button {
+  padding: 4px 15px;
+  text-decoration: none;
+  border-radius: 3px;
+  background: var(--button-color);
+  color: var(--background-color);
 }
