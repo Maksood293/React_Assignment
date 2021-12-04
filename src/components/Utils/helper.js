@@ -31,7 +31,7 @@ export const validateData = (data, setError, setSucces, dataList) => {
   }
 
   function checkEmail(input) {
-    const duplicateEmail = dataList.some((item) => item.email === input);
+    const duplicateEmail = dataList?.some((item) => item.email === input);
     const re =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (duplicateEmail) {
