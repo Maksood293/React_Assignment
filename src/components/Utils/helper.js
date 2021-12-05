@@ -6,17 +6,25 @@ export const validateData = (data, setError, setSucces, dataList) => {
         dob: `date of birth must be ${min} number`,
       }));
     } else {
+      setError((previus) => ({
+        ...previus,
+        dob: "",
+      }));
       setSucces(true);
     }
   }
   function checkPinLength(input, min) {
-    if (input.length < min) {
+    if (input?.length === 6) {
+      setError((previus) => ({
+        ...previus,
+        pin: "",
+      }));
+      setSucces(true);
+    } else if (input.length < min) {
       setError((previus) => ({
         ...previus,
         pin: `Pincode must be ${min} digit`,
       }));
-    } else {
-      setSucces(true);
     }
   }
   function checkPhoneLength(input, min) {
@@ -26,6 +34,10 @@ export const validateData = (data, setError, setSucces, dataList) => {
         phone: `Phone number must be ${min} digit`,
       }));
     } else {
+      setError((previus) => ({
+        ...previus,
+        dob: "",
+      }));
       setSucces(true);
     }
   }
@@ -40,6 +52,10 @@ export const validateData = (data, setError, setSucces, dataList) => {
         email: `This Email is already exist`,
       }));
     } else if (re.test(input.trim())) {
+      setError((previus) => ({
+        ...previus,
+        email: "",
+      }));
       setSucces(true);
     } else {
       setError((previus) => ({
@@ -48,7 +64,6 @@ export const validateData = (data, setError, setSucces, dataList) => {
       }));
     }
   }
-
   checkDobLength(data.dob, 10);
   checkPinLength(data.pin, 6);
   checkPhoneLength(data.phone, 10);

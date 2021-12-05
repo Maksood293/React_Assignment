@@ -9,7 +9,7 @@ function Input({ id, label, type, placeholder, handleChange, value, message }) {
         id={id}
         name={id}
         placeholder={placeholder}
-        onChange={(e) => handleChange(e)}
+        onChange={handleChange}
         value={value ? value : null}
         required
       />

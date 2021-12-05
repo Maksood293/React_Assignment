@@ -9,10 +9,10 @@ function App() {
     <Router>
       <div className="App">
         <div className="web-name">
-          <Link to="/home">Enrollment App</Link>
+          <Link to="/">Enrollment App</Link>
         </div>
         <Switch>
-          <Route exact path="/home" component={Home} />
+          <Route exact path="/" component={Home} />
           <Route
             exact
             path="/enroll-new-student"

@@ -61,20 +61,20 @@ function StudentEnrollForm(props) {
         setStudentDetail((previus) => ({ ...previus, id: user.id }));
       }
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     const studentData = JSON.parse(localStorage.getItem("students-record"));
     if (studentData?.length > 0) {
       setData(studentData);
     }
-  }, []);
+  }, [success]);
 
   //for add new student data
   const handleSubmit = (e) => {
     e.preventDefault();
     validateData(studentDetail, setError, setSucces, data);
-    if (data?.length > 0 && success) {
+    if (data?.length >= 1 && success) {
       setData((previous) => [...previous, studentDetail]);
       localStorage.setItem("students-record", JSON.stringify(data));
     } else if (success) {
@@ -85,6 +85,7 @@ function StudentEnrollForm(props) {
   //for Edit the student data
   const updateSubmit = (e) => {
     e.preventDefault();
+
     if (data.length <= 1) {
       localStorage.setItem("students-record", JSON.stringify([studentDetail]));
     } else {
@@ -96,7 +97,7 @@ function StudentEnrollForm(props) {
       ];
       localStorage.setItem("students-record", JSON.stringify(updatedProjects));
     }
-    history.push("/home");
+    history.push("/");
   };
 
   const handleChange = (e) => {
