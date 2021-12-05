@@ -75,17 +75,20 @@ function StudentEnrollForm(props) {
     e.preventDefault();
     validateData(studentDetail, setError, setSucces, data);
     if (data?.length >= 1 && success) {
-      setData((previous) => [...previous, studentDetail]);
-      localStorage.setItem("students-record", JSON.stringify(data));
+      localStorage.setItem(
+        "students-record",
+        JSON.stringify(data.concat([studentDetail]))
+      );
+      history.push("/");
     } else if (success) {
       localStorage.setItem("students-record", JSON.stringify([studentDetail]));
+      history.push("/");
     }
   };
 
   //for Edit the student data
   const updateSubmit = (e) => {
     e.preventDefault();
-
     if (data.length <= 1) {
       localStorage.setItem("students-record", JSON.stringify([studentDetail]));
     } else {
