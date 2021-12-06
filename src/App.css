@@ -80,3 +80,11 @@ th {
   background: var(--button-color);
   color: var(--background-color);
 }
+.delete-button {
+  cursor: pointer;
+  padding: 5px 12px;
+  border: none;
+  border-radius: 3px;
+  background: var(--error-color);
+  color: var(--background-color);
+}

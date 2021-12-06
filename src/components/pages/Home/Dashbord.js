@@ -7,13 +7,23 @@ function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [studentDetail, setStudentDetail] = useState();
   const [loader, setLoader] = useState(true);
+  const [deleteItem, setDeleteItem] = useState(false);
+
   useEffect(() => {
     const studentData = JSON.parse(localStorage.getItem("students-record"));
     if (studentData?.length > 0) {
       setData(studentData);
     }
     setLoader(false);
-  }, []);
+  }, [deleteItem]);
+
+  const handleDelete = (id) => {
+    localStorage.setItem(
+      "students-record",
+      JSON.stringify(data.filter((user) => user.id !== id))
+    );
+    setDeleteItem(true);
+  };
 
   const togglePopup = (data) => {
     setStudentDetail(data);
@@ -64,6 +74,12 @@ function Home() {
                     >
                       Edit
                     </Link>{" "}
+                    <button
+                      className="delete-button"
+                      onClick={(e) => handleDelete(user.id)}
+                    >
+                      Delete
+                    </button>{" "}
                   </td>
                 </tr>
               ))
